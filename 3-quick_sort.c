@@ -7,14 +7,15 @@
  * @b: sec int
  * Return: void
  */
-void swap(int *array, size_t size, int a, int b)
+void swap(int *array, size_t size, int *a, int *b)
 {
-	int tmp;
-
-	tmp = a;
-	a = b;
-	b = tmp;
-	print_array(array, size);
+	if (a != b)
+	{
+		*a = *a + *b;
+		*b = *a - *b;
+		*a = *a - *b;
+		print_array((const int *)array, size);
+	}
 }
 
 /**
@@ -26,7 +27,7 @@ void swap(int *array, size_t size, int a, int b)
  * Return: pivot in its right place
  *
  */
-size_t partition(int arr[], size_t size, int low,int high)
+size_t partition(int arr[], size_t size, ssize_t low, ssize_t high)
 {
 	int pivot;
 	int i, j;
@@ -38,11 +39,10 @@ size_t partition(int arr[], size_t size, int low,int high)
 	{
 		if (arr[j] < pivot)
 		{
-			i++;
-			swap(arr, size, arr[i], arr[j]);
+			swap(arr, size, &arr[j], &arr[i++]);
 		}
 	}
-	swap(arr, size, arr[i + 1], arr[high]);
+	swap(arr, size, &arr[i], &arr[high]);
 	return (i);
 }
 
@@ -53,7 +53,7 @@ size_t partition(int arr[], size_t size, int low,int high)
  * @high: the highest index
  * Return: Void
  */
-void quicksort(int *array, size_t size, size_t low, size_t high)
+void quicksort(int *array, size_t size, ssize_t low, ssize_t high)
 {
 	if (low < high)
 	{
