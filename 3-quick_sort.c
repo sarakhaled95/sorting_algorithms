@@ -22,6 +22,7 @@ void swap(int *array, size_t size, int *a, int *b)
  * partition - itirate over the input array, swapping elements
  * that are strictly less than a pre-selected pivot element
  * @arr: array that needs to be sorted
+ * @size: size of array
  * @low: lowest index
  * @high: highest index
  * Return: pivot in its right place
@@ -47,8 +48,9 @@ size_t partition(int arr[], size_t size, ssize_t low, ssize_t high)
 }
 
 /**
- * qicksort - quick sort with lomuto partition scheme
+ * quicksort - quick sort with lomuto partition scheme
  * @array: array that needs to be sorted
+ * @size: size of array
  * @low: the lowest index
  * @high: the highest index
  * Return: Void
@@ -58,6 +60,7 @@ void quicksort(int *array, size_t size, ssize_t low, ssize_t high)
 	if (low < high)
 	{
 		size_t part = partition(array, size, low, high);
+
 		quicksort(array, size, low, part - 1);
 		quicksort(array, size, part + 1, high);
 	}
