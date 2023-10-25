@@ -7,7 +7,7 @@
  * @b: sec int
  * Return: void
  */
-void swap(int *array, size_t size, int *a, int *b)
+void _swap(int *array, size_t size, int *a, int *b)
 {
 	if (a != b)
 	{
@@ -40,10 +40,10 @@ size_t partition(int arr[], size_t size, ssize_t low, ssize_t high)
 	{
 		if (arr[j] < pivot)
 		{
-			swap(arr, size, &arr[j], &arr[i++]);
+			_swap(arr, size, &arr[j], &arr[i++]);
 		}
 	}
-	swap(arr, size, &arr[i], &arr[high]);
+	_swap(arr, size, &arr[i], &arr[high]);
 	return (i);
 }
 
